@@ -1,61 +1,50 @@
 
-```markdown
-## 🎯 Workshop Exercises Setup Instructions
+# Exercise 0: Setup Instructions
 
-This workshop teaches you how to integrate AI-powered agents throughout the Software Development Lifecycle (SDLC) using GitHub Copilot CLI, SDK, MCP Server, and Multi-Agent orchestration.
-
-**Application:** Help Desk CRM - A production-structured helpdesk ticketing system built with FastAPI, featuring customer management, ticket tracking, and a layered architecture.
-
----
-
-## 📦 Initial Setup: Help Desk Application
-
-### Prerequisites
-
-Before starting, ensure you have:
-
-| Requirement | Version | Purpose |
-|------------|---------|---------|
-| **Python** | 3.11+ | Backend runtime |
-| **PowerShell** | Latest | Command execution (Windows) |
-| **GitHub CLI** | Latest | Repository management |
-| **Git** | Latest | Version control |
-| **GitHub Copilot Subscription** | Active | AI agent features |
-| **VS Code** | Latest (optional) | Code editor |
-
-## 🚀 Step 1: Clone the Repository
-
-
-Repo: Help_Desk_Application (owner: CanarysPlayground)
-Default Branch: main 
-
-clone this repo in VS code
-- Open VS Code
-- Open Command Palette (Ctrl+Shift+P)
-- Type "Git: Clone" and select it
-- Paste the repository URL: `https://github.com/CanarysPlayground/Help_Desk_Application.git`
-- Choose a local directory to clone the repo
-- After cloning, open the cloned folder in VS Code
-### Step 2: Set Up Python Environment
+Before we get started on the workshop, there are a few tasks we need to complete to get everything ready. We will clone the Help Desk application repository, set up a Python environment, and verify the app runs locally.
 
 ## Prerequisites
-- Python 3.11+ on Windows
-- PowerShell
-- Optional: gh (GitHub CLI), rg (ripgrep), curl
 
-## Install & Run
+Before starting, ensure you have the following installed:
+
+- Python 3.11+ (Windows)
+- PowerShell (latest)
+- Git
+- GitHub CLI (optional)
+- VS Code (optional)
+- GitHub Copilot subscription (active)
+
+## Setting up the Help Desk Application
+
+To work through the exercises, you need a local copy of the application repository.
+
+1. Open VS Code.
+2. Open the Command Palette (Ctrl+Shift+P).
+3. Type Git: Clone and select it.
+4. Paste the repository URL: https://github.com/CanarysPlayground/Help_Desk_Application.git
+5. Choose a local directory to clone the repo.
+6. After cloning, open the cloned folder in VS Code.
+
+Repo: Help_Desk_Application (owner: CanarysPlayground)
+Default branch: main
+
+## Create a Python Environment
+
+Next, create and activate a virtual environment, install dependencies, and start the app.
+
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-uvicorn app.main:app 
+uvicorn app.main:app
 ```
 
-- Health: GET http://localhost:8000/health
+After the app starts:
+
+- Health endpoint: http://localhost:8000/health
 - UI: http://localhost:8000/
 
-
-## 🗂️ Step 3: Understand Project Structure
+## Project Structure
 
 ```
 Help_Desk_Application/
@@ -91,30 +80,20 @@ Help_Desk_Application/
     └── stages/
 ```
 
+## Exercise Progression
 
-## 📚 Exercise Progression
+- Exercise 1: Create Custom CLI Agent (30 min)
+- Exercise 2: Plan and Implement Assign Feature (45 min)
+- Exercise 3: Build CI/CD Workflows (40 min)
+- Exercise 4: Observe Self-Healing (30 min)
 
-| Exercise | Topic | Skills Learned | Duration |
-|----------|-------|----------------|----------|
-| Exercise 1 | Create Custom CLI Agent | Install CLI, create agent with custom instructions | 30 min |
-| Exercise 2 | Plan & Implement Assign Feature | Use `/plan`, `/delegate` to add ticket assignment | 45 min |
-| Exercise 3 | Build CI/CD Workflows | Create GitHub Actions for testing and self-healing | 40 min |
-| Exercise 4 | Observe Self-Healing | Monitor automated dependency fixes via Copilot CLI | 30 min |
+Total workshop time: about 2.0 hours
 
-**Total Workshop Time:** ~2.0 hours
+## Summary
 
----
+You now have the Help Desk application cloned locally and can run it with a local Python environment. This setup will be used throughout the remaining exercises.
 
-## 🚀 Ready to Start?
+## Next step
 
-Once your setup is verified, proceed to:
-
-### Exercise 1: Create Custom CLI Agent →
-
-Learn how to install Copilot CLI, create custom instructions, and build your first AI coding agent for the Help Desk application.
-
----
-
-**Happy Learning! 🎉**
-```
+Proceed to Exercise 1: Create Custom CLI Agent in [EXERCISE_1_CLI_AGENT.md](EXERCISE_1_CLI_AGENT.md).
 
