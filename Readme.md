@@ -22,6 +22,7 @@ The Help Desk CRM is a ticketing system that manages customer support requests t
 2. [Exercise 2: Plan & Implement Ticket Assignment Feature](EXERCISE_2_PLAN_ASSIGN_FEATURE.md)
 3. [Exercise 3: Build CI/CD Workflows](EXERCISE_3_BUILD_WORKFLOW.md)
 4. [Exercise 4: Self-Healing Workflow In Action](EXERCISE_4_SELF_HEALING.md)
+5. [Exercise 5: PR Summarizer with GitHub Copilot SDK](EXERCISE_5_PRSUMMARY_SDK.md)
 
 ### [Exercise 1: Create Custom CLI Agent](EXERCISE_1_CLI_AGENT.md)
 **Duration:** 30 minutes  
@@ -47,6 +48,10 @@ The Help Desk CRM is a ticketing system that manages customer support requests t
 
 ### [Exercise 4: Self-Healing Workflow In Action](EXERCISE_4_SELF_HEALING.md)
 **Duration:** 30 minutes  
+**Difficulty:** Intermediate
+
+### [Exercise 5: PR Summarizer with GitHub Copilot SDK](EXERCISE_5_PRSUMMARY_SDK.md)
+**Duration:** 40 minutes  
 **Difficulty:** Intermediate
 
 
@@ -80,7 +85,7 @@ By completing all four exercises, you will gain proficiency in:
 
 **Recommended Path:**
 ```
-SetupInstructions.md → Exercise 1 → Exercise 2 → Exercise 3 → Exercise 4
+SetupInstructions.md → Exercise 1 → Exercise 2 → Exercise 3 → Exercise 4 → Exercise 5
 ```
 
 **Total Time Investment:** ~2.5 hours
@@ -116,6 +121,12 @@ Workshop Flow
     ├── Review auto-fixes
     └── Merge self-healing PR
 
+└── Exercise 5: PR Summarizer with Copilot SDK (40 min)
+    ├── Setup Copilot SDK environment
+    ├── Build AI-powered PR analyzer
+    ├── Create GitHub Actions integration
+    └── Test automated PR summaries
+
 ```
 
 ## Additional Resources
@@ -133,6 +144,7 @@ Workshop Flow
 - [Exercise 2: Plan & Implement](EXERCISE_2_PLAN_ASSIGN_FEATURE.md)
 - [Exercise 3: Build Workflows](EXERCISE_3_BUILD_WORKFLOW.md)
 - [Exercise 4: Self-Healing](EXERCISE_4_SELF_HEALING.md)
+- [Exercise 5: PR Summarizer with SDK](EXERCISE_5_PRSUMMARY_SDK.md)
 
 
 ## What's Next?

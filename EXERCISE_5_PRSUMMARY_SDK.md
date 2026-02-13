@@ -321,6 +321,3 @@ You now know how to:
 **Powered by GitHub Copilot SDK 🤖✨**
 ```
 
-This streamlined version focuses specifically on using Copilot SDK for PR summarization with clear, actionable steps!This streamlined version focuses specifically on using Copilot SDK for PR summarization with clear, actionable steps!
-
-reference this content and give the steps to folow here for this repo

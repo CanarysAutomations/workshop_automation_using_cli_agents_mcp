@@ -148,12 +148,4 @@ This section includes:
 
 ## 🚀 Next Exercise
 
-Proceed to Exercise 4: Understanding Self-Healing to:
-- Learn how self-healing detects issues
-- Understand automated fix strategies
-- Customize self-healing rules
-- Monitor self-healing effectiveness
-- Handle complex dependency conflicts
-
-## 🚀 Next Exercise
 Proceed to [Exercise 4: Self-Healing with SDK](EXERCISE_4_SELF_HEALING.md) to implement automatic dependency issue resolution using Copilot SDK.

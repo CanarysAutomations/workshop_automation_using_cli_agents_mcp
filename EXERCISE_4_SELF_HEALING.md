@@ -1,4 +1,3 @@
-
 ```markdown
 # Exercise 4: Self-Healing Workflow in Action
 
@@ -594,4 +593,8 @@ You've completed all exercises in the Agents-in-SDLC workshop using Copilot CLI!
 
 **Pro Tip:** Whenever you're unsure about a workflow, PR, or CI status, just ask Copilot CLI in natural language! It's like having an expert DevOps engineer at your fingertips. 🚀
 ```
+
+## Next Exercise
+
+Proceed to [Exercise 5: PR Summarizer with GitHub Copilot SDK](EXERCISE_5_PRSUMMARY_SDK.md) to build an AI agent that automatically analyzes and summarizes pull requests.
 

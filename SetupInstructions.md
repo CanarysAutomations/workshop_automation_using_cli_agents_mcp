@@ -1,4 +1,3 @@
-
 # Exercise 0: Setup Instructions
 
 Before we get started on the workshop, there are a few tasks we need to complete to get everything ready. We will clone the Help Desk application repository, set up a Python environment, and verify the app runs locally.
@@ -86,6 +85,7 @@ Help_Desk_Application/
 - Exercise 2: Plan and Implement Assign Feature (45 min)
 - Exercise 3: Build CI/CD Workflows (40 min)
 - Exercise 4: Observe Self-Healing (30 min)
+- Exercise 5: PR Summarizer with Copilot SDK (40 min)
 
 Total workshop time: about 2.0 hours
 
