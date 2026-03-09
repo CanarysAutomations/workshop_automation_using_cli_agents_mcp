@@ -280,17 +280,6 @@ Agent Behavior:
 - Use type hints and docstrings for all functions
 - Suggest incremental changes rather than large rewrites
 ```
-
-**Expected Output:**
-```
-✓ Agent "helpdesk-crm-agent" created successfully
-✓ Agent capabilities configured
-✓ Custom instructions linked
-✓ Ready to assist with Helpdesk CRM development
-
-To use this agent, mention @helpdesk-crm-agent in your questions.
-```
-
 ---
 
 ### Step 4.3: Verify Agent Creation
@@ -298,15 +287,6 @@ To use this agent, mention @helpdesk-crm-agent in your questions.
 **List Available Agents**
 ```
 /agent list
-```
-
-**Expected Output:**
-```
-Available Agents:
-1. helpdesk-crm-agent - Custom coding agent for Helpdesk CRM application
-   Status: Active
-   Capabilities: code_analysis, code_generation, testing, documentation
-   Scope: app/**, tests/**, .github/**
 ```
 
 ---
@@ -318,32 +298,6 @@ Available Agents:
 @helpdesk-crm-agent Explain the ticket creation flow in this codebase. List all files involved.
 ```
 
----
-### Step 4.4: Agent Best Practices
-
-**Do's:**
-- ✓ Always mention `@helpdesk-crm-agent` to invoke the agent
-- ✓ Be specific about file paths and feature requirements
-- ✓ Ask for explanations if suggestions are unclear
-- ✓ Request tests alongside code generation
-- ✓ Review agent suggestions before applying changes
-
-**Don'ts:**
-- ✗ Don't apply changes without reviewing them
-- ✗ Don't ask about unrelated technologies
-- ✗ Don't expect agent to modify restricted files
-- ✗ Don't provide incomplete context for complex tasks
-
----
-
-## 💡 Tips for Effective Copilot CLI Usage
-
-1. **Be Specific**: Provide context about your task (e.g., "in the ticket service" instead of "in the code")
-2. **Iterative Approach**: Start with high-level questions, then drill down into specifics
-3. **Reference Files**: Mention specific file paths for more accurate suggestions
-4. **Follow-up Questions**: Ask for clarification or alternatives if first response isn't ideal
-5. **Use Chat History**: Copilot maintains context within a chat session
-6. **Custom Instructions**: Keep instructions updated as the project evolves
 
 ---
 
