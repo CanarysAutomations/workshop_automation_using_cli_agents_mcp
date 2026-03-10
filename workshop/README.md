@@ -31,4 +31,10 @@ Your team maintains **Help Desk CRM** — a FastAPI ticketing system serving sup
 | [Exercise 4](exercise-4.md) | Self-Healing Workflow In Action | ~30 min |
 | [Exercise 5](exercise-5.md) | PR Summarizer with Copilot SDK | ~40 min |
 
-Start here: [Exercise 0 — Environment Setup](exercise-0.md)
+## Get Started
+
+[![⭐ Star this repo](https://img.shields.io/github/stars/CanarysAutomations/workshop_automation_using_cli_agents_mcp?style=social)](https://github.com/CanarysAutomations/workshop_automation_using_cli_agents_mcp/stargazers)
+&nbsp;
+[**Use this Template**](https://github.com/new?template_owner=CanarysAutomations&template_name=workshop_automation_using_cli_agents_mcp&owner=%40me&name=workshop_automation_using_cli_agents_mcp&description=Agents+in+SDLC+Workshop&visibility=public)
+
+Once your repo is created, start here: [Exercise 0 — Environment Setup](exercise-0.md)
