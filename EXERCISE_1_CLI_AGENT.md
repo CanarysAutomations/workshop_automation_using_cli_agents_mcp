@@ -1,366 +1,185 @@
-```markdown
-# Exercise 1: Create a Custom Coding Agent via CLI
+# Exercise 01 — Create a Custom CLI Agent
 
-
-
-## 🎯 Objective
-Use Copilot CLI to create a custom coding agent that will help implement features in the Helpdesk CRM application.
+> **Duration:** 30 minutes &nbsp;|&nbsp; **Copilot Feature:** Copilot CLI + `/agent` command &nbsp;|&nbsp; **Goal:** Install and authenticate the GitHub Copilot CLI, clone the Help Desk CRM repository, create domain-specific custom instructions, and generate a custom coding agent tailored to the application.
 
 ---
 
-## 📚 Reference Documents
-- [Install Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli)
-- [Use Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli)
-- [Add Custom Instructions](https://docs.github.com/en/copilot/how-tos/copilot-cli/add-custom-instructions)
-- [About Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+## Background
+
+A **custom CLI agent** is a named AI persona you create inside GitHub Copilot CLI. Once created, you invoke it with `@agent-name` in any Copilot CLI session. The agent carries your custom instructions automatically — it knows your project's architecture, naming conventions, and coding style without you needing to repeat that context every time.
+
+In this exercise you will create an agent called `helpdesk-crm-agent` that understands the FastAPI repository-pattern architecture of the Help Desk CRM. This agent will be used in all subsequent exercises.
 
 ---
 
-## 📦 Part 1: Prerequisites and Installation
+## What You Will Learn
 
-### Step 1.1: Prerequisites
+1. How to install and authenticate the GitHub Copilot CLI extension.
+2. How to create a `.github/copilot-instructions.md` file using a Copilot prompt.
+3. How to create a named custom agent with `/agent` and configure its scope.
+4. How to invoke and test a custom agent using `@agent-name`.
 
-Before installing Copilot CLI, ensure you have:
+---
 
-- **GitHub Account**: Active GitHub account with Copilot access
-- **GitHub Copilot Subscription**: Individual, Business, or Enterprise subscription
-- **Supported Operating System**: Windows, macOS, or Linux
-- **Internet Connection**: Required for authentication and API calls
+## Prerequisites
 
-### Step 1.2: Install GitHub CLI
+- Completed [Exercise 00 — Setup & Environment](SetupInstructions.md)
+- `gh` authenticated (`gh auth status` shows your username)
+- `copilot` command available (`gh copilot --version` returns a version)
+- Terminal open inside the `Help_Desk_Application` directory with `.venv` activated
 
-**Windows (Command Prompt)**
-```cmd
-:: Install GitHub CLI using winget
-winget install --id GitHub.cli
+---
 
-:: Verify installation
-gh --version
-```
+## Step 1 — Verify GitHub CLI Authentication
 
-**Alternative Windows Installation Methods:**
-- Download MSI installer from [https://cli.github.com/](https://cli.github.com/)
-- Use Chocolatey: `choco install gh`
-- Use Scoop: `scoop install gh`
-
-**macOS**
-```bash
-# Install using Homebrew
-brew install gh
-
-# Verify installation
-gh --version
-```
-
-### Step 1.3: Update GitHub CLI (If Already Installed)
-
-**Windows**
-```cmd
-winget upgrade --id GitHub.cli
-```
-
-**macOS**
-```bash
-brew upgrade gh
-```
-
-### Step 1.4: Authenticate with GitHub CLI
-
-**Interactive Authentication**
-```cmd
-/login
-```
-
-I understand now. You want to document the `/login` slash command workflow that's used within the Copilot CLI chat. Here's the corrected Step 1.4 with the proper authentication flow using `/login`:
-
-```markdown
-### Step 1.4: Authenticate with GitHub CLI
-
-**Step 1: GitHub CLI Authentication**
-
-First, authenticate with GitHub CLI:
-```cmd
-gh auth login
-```
-
-**Authentication Flow:**
-
-1. **Enter the `/login` command** in the Copilot CLI chat
-2. **Copilot will display**:
-   - A verification code (e.g., `ABCD-1234`)
-   - A URL link (e.g., `https://github.com/login/device`)
-3. **Copy the verification code** shown in the terminal
-4. **Click the URL** or manually open `https://github.com/login/device` in your browser
-5. **Paste the verification code** in the browser
-6. **Click "Continue"** to proceed with authorization
-7. **Authorize GitHub Copilot** when prompted
-8. **Return to terminal** - You should see a success message
-
-
-**Verify Authentication**
-```cmd 
-copilot
-```
-
-## 📁 Part 2: Clone Repository Using CLI
-
-### Step 2.1: Navigate to Desired Directory
-
-**Windows Command Prompt**
-```cmd
-cd C:\Users\<UserName>\
-```
-
-### Step 2.2: Clone Help Desk Application Repository
+Open a terminal and confirm you are authenticated and in the correct directory:
 
 ```cmd
-gh repo clone https://github.com/CanarysPlayground/Help_Desk_Application.git
-```
-
-### Step 2.3: Navigate to Cloned Repository
-
-```cmd
+gh auth status
 cd Help_Desk_Application
 ```
 
-### Step 2.4: Verify Repository Contents
+Expected: `✓ Logged in to github.com as <your-username>`
 
-```cmd
-dir
-```
+> **Note:** If authentication has expired, run `gh auth login` again and follow the browser flow.
 
+---
 
-## 📝 Part 3: Add Custom Instructions to Copilot CLI
+## Step 2 — Create the `.github` Directory
 
-### Step 3.1: Create Custom Instructions Directory
+The `.github` folder holds repository-level configuration files that Copilot reads automatically.
 
 **Windows**
+
 ```cmd
 mkdir .github
 ```
 
-### Step 3.2: Generate Custom Instructions File Using Copilot CLI
+**macOS / Linux**
 
-Launch Copilot CLI chat:
+```bash
+mkdir -p .github
+```
+
+---
+
+## Step 3 — Generate Custom Instructions with Copilot CLI
+
+Custom instructions tell every Copilot session about your project's conventions. You will use Copilot itself to draft them.
+
+**Launch a Copilot CLI chat session:**
+
 ```cmd
 copilot
 ```
 
-In the Copilot CLI chat, use the following prompt:
+**Paste the following prompt:**
 
-#### 🔹 Prompt to Generate Custom Instructions
 ```
-Create a custom instructions file named "copilot-instructions.md" for the Helpdesk CRM application with the following guidelines:
+Create a custom instructions file named "copilot-instructions.md" for the Helpdesk CRM application with these guidelines:
 
 1. Project Context: FastAPI-based helpdesk ticketing system
-2. Code Style: Follow PEP 8 for Python, use type hints
-3. Architecture: Repository pattern with services layer
-4. Database: SQLAlchemy ORM with SQLite
-5. Testing: Use pytest for unit and integration tests
-6. Documentation: Clear docstrings for all functions and classes
-7. Error Handling: Proper exception handling with meaningful messages
-8. API Design: RESTful endpoints with Pydantic schemas for validation
+2. Code Style: Follow PEP 8 for Python, use type hints on all functions
+3. Architecture: Repository pattern — Routes → Services → Repositories → Models
+4. Database: SQLAlchemy ORM with SQLite; never bypass the repository layer
+5. Testing: Use pytest for unit and integration tests; write tests alongside code
+6. Documentation: Clear docstrings for all public functions and classes
+7. Error Handling: Proper exception handling with meaningful HTTP error responses
+8. API Design: RESTful endpoints with Pydantic v2 schemas for all request/response validation
 ```
 
-### Step 3.3: Verify Custom Instructions
+Copy the generated content and save it to `.github/copilot-instructions.md`.
 
-In chat, ask:
-```
-? What are the custom instructions for this project?
-```
-
-Copilot should reference the custom instructions file created in `.github/copilot-instructions.md`.
-
----
-
-## 🤖 Part 4: Create Custom Agent Using Copilot CLI
-
-### Step 4.1: Request Help from Copilot
-
-I'll provide you with the steps for creating an agent using the `/agent` command in Copilot CLI, including both manual and Copilot-assisted options:
-
-```markdown
-## 🤖 Part 4: Create Custom Agent Using Copilot CLI
-
-### Step 4.1: Start Copilot CLI Chat if you have exited
+**Verify the file was created:**
 
 ```cmd
-copilot
+type .github\copilot-instructions.md
 ```
-
-### Step 4.2: Create Custom Agent Using `/agent` Command
-
-Once in the Copilot CLI chat, use the `/agent` command:
-
-```
-/agent
-```
-
-**You will see two options:**
-
-1. **Create agent manually** - You define the agent structure yourself
-2. **Create agent with Copilot** - Copilot assists in creating the agent
 
 ---
 
-#### Option 1: Create Agent Manually
+## Step 4 — Create a Custom Agent
 
-**Step 1: Select Manual Creation**
+Still inside the Copilot CLI chat, use the `/agent` command to create your named agent.
+
 ```
 /agent
-→ Select: "Create agent manually"
 ```
 
-**Step 2: Provide Agent Details**
-
-Follow the prompts:
-- **Agent Name**: `helpdesk-crm-agent`
-- **Description**: `Custom coding agent for Helpdesk CRM application that implements features, fixes bugs, and creates workflows`
-- **Capabilities**: Select from:
-  - `code_analysis` - Analyze existing code
-  - `code_generation` - Generate new code
-  - `code_review` - Review and suggest improvements
-  - `testing` - Create and run tests
-  - `documentation` - Generate documentation
-
-**Step 3: Define Agent Scope**
-- **Allowed Paths**: `app/**, tests/**, .github/**`
-- **Programming Languages**: `python`
-- **Frameworks**: `fastapi, sqlalchemy, pydantic, pytest`
-
-**Step 4: Set Agent Behavior**
-- **Context Awareness**: Enable (uses custom instructions)
-- **Auto-suggestions**: Enable
-- **Validation**: Require code review before applying changes
-
----
-
-#### Option 2: Create Agent with Copilot (Recommended)
-
-**Step 1: Select Copilot-Assisted Creation**
-```
-/agent
-→ Select: "Create agent with Copilot"
-```
-
-**Step 2: Use This Prompt**
+You will see two options — select **"Create agent with Copilot"** (recommended), then paste this prompt:
 
 ```
 Create a custom coding agent named "helpdesk-crm-agent" for our FastAPI-based helpdesk ticketing system.
 
 Agent Purpose:
-- Implement new features following repository pattern
-- Fix bugs in ticket and customer management
-- Generate tests for services and API endpoints
-- Create and update API documentation
-- Suggest code improvements based on best practices
+- Implement new features following the repository pattern
+- Fix bugs in ticket and customer management modules
+- Generate unit and integration tests for services and API endpoints
+- Review code for PEP 8 compliance and correct type hints
 
 Agent Capabilities:
-- Analyze FastAPI routes, Pydantic schemas, and SQLAlchemy models
-- Generate CRUD operations following our architecture pattern
-- Create pytest unit and integration tests
-- Review code for PEP 8 compliance and type hints
-- Suggest performance optimizations
+- Analyse FastAPI routes, Pydantic schemas, and SQLAlchemy models
+- Generate CRUD operations following: Route → Service → Repository → Model
+- Create pytest tests with fixtures and assertions
+- Suggest performance and readability improvements
 
 Context:
-- Project uses: FastAPI, SQLAlchemy, SQLite, Pydantic, pytest
+- Stack: FastAPI, SQLAlchemy, SQLite, Pydantic v2, pytest
 - Architecture: Route → Service → Repository → Model
-- Code style: PEP 8 with type hints, 100 char line limit
+- Code style: PEP 8, type hints, 100-character line limit
 - File structure: app/models/, app/schemas/, app/api/, app/services/, app/repositories/
 
 Agent Scope:
 - Allowed paths: app/**, tests/**, .github/**
-- Focus areas: ticket management, customer management, workflow automation
-- Avoid modifying: core/config.py, core/database.py without explicit permission
+- Focus: ticket management, customer management, workflow automation
+- Do not modify core/config.py or core/database.py without explicit permission
 
-Agent Behavior:
-- Always follow custom instructions in .github/copilot-instructions.md
-- Provide explanations for suggested changes
-- Generate tests alongside code changes
-- Use type hints and docstrings for all functions
-- Suggest incremental changes rather than large rewrites
+Agent Behaviour:
+- Always follow .github/copilot-instructions.md
+- Provide a brief explanation for every suggested change
+- Generate tests alongside every code change
+- Prefer incremental, reviewable changes over large rewrites
 ```
 
-**Expected Output:**
+**Expected confirmation:**
+
 ```
 ✓ Agent "helpdesk-crm-agent" created successfully
-✓ Agent capabilities configured
 ✓ Custom instructions linked
 ✓ Ready to assist with Helpdesk CRM development
 
-To use this agent, mention @helpdesk-crm-agent in your questions.
+Invoke with: @helpdesk-crm-agent
 ```
 
 ---
 
-### Step 4.3: Verify Agent Creation
+## Step 5 — Verify and Test the Agent
 
-**List Available Agents**
+**List available agents:**
+
 ```
 /agent list
 ```
 
-**Expected Output:**
-```
-Available Agents:
-1. helpdesk-crm-agent - Custom coding agent for Helpdesk CRM application
-   Status: Active
-   Capabilities: code_analysis, code_generation, testing, documentation
-   Scope: app/**, tests/**, .github/**
-```
+Expected output includes `helpdesk-crm-agent` with status `Active`.
 
----
+**Test the agent with a codebase question:**
 
-### Step 4.4: Test Your Custom Agent
-
-**Example 1: Ask Agent to Explain Codebase**
 ```
-@helpdesk-crm-agent Explain the ticket creation flow in this codebase. List all files involved.
+@helpdesk-crm-agent Explain the ticket creation flow in this codebase. List every file involved and briefly describe each file's responsibility.
 ```
 
----
-### Step 4.4: Agent Best Practices
+The agent should reference `ticket_routes.py`, `ticket_service.py`, `ticket_repository.py`, and `ticket.py` (model and schema) with accurate descriptions.
 
-**Do's:**
-- ✓ Always mention `@helpdesk-crm-agent` to invoke the agent
-- ✓ Be specific about file paths and feature requirements
-- ✓ Ask for explanations if suggestions are unclear
-- ✓ Request tests alongside code generation
-- ✓ Review agent suggestions before applying changes
-
-**Don'ts:**
-- ✗ Don't apply changes without reviewing them
-- ✗ Don't ask about unrelated technologies
-- ✗ Don't expect agent to modify restricted files
-- ✗ Don't provide incomplete context for complex tasks
+Type `exit` to close the session.
 
 ---
 
-## 💡 Tips for Effective Copilot CLI Usage
+## Key Takeaways
 
-1. **Be Specific**: Provide context about your task (e.g., "in the ticket service" instead of "in the code")
-2. **Iterative Approach**: Start with high-level questions, then drill down into specifics
-3. **Reference Files**: Mention specific file paths for more accurate suggestions
-4. **Follow-up Questions**: Ask for clarification or alternatives if first response isn't ideal
-5. **Use Chat History**: Copilot maintains context within a chat session
-6. **Custom Instructions**: Keep instructions updated as the project evolves
+- `.github/copilot-instructions.md` injects project context into every Copilot CLI session automatically — you never repeat your conventions.
+- `/agent` creates a named agent persona; invoke it with `@helpdesk-crm-agent` in any session.
+- Always provide explicit scope (allowed paths, frameworks, architecture) when creating an agent — it improves response quality significantly.
+- Start prompts broadly (explain the flow) before narrowing to specific tasks — this validates that the agent loaded the right context.
 
----
-
-
-## 🚀 Next Exercise
-
-Proceed to Exercise 2: Plan Assign Feature to use `/plan` command for implementing the Assign feature using Copilot CLI.
-
----
-
-## 📖 Additional Resources
-
-- [GitHub CLI Documentation](https://cli.github.com/manual/)
-- [GitHub Copilot CLI Guide](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line)
-- [GitHub Copilot Best Practices](https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
-```
-
----
+> **Next:** [Exercise 02 — Plan & Implement the Ticket Assignment Feature](EXERCISE_2_PLAN_ASSIGN_FEATURE.md)
