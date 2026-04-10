@@ -1,4 +1,4 @@
-# Automation Using CLI Agents & MCP — Workshop
+# Debugging and Automation with GHCP
 
 > **Audience:** Developers, DevOps Engineers, Tech Leads &nbsp;|&nbsp; **Total Duration:** ~2 hours core + ~55 min optional &nbsp;|&nbsp; **Pre-requisites:** GitHub Copilot access, GitHub CLI, Python 3.11+, VS Code with GitHub Copilot Chat extension
 
