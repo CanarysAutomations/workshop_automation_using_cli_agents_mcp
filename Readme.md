@@ -37,16 +37,16 @@ A fully automated developer workflow around the **Help Desk CRM** — a realisti
 
 | # | Exercise | Copilot Feature | Duration |
 |---|---|---|---|
-| 01 | [Install GitHub CLI & Authenticate](EXERCISE_01_SETUP_GITHUB_CLI.md) | GitHub CLI + Copilot CLI extension | 10 min |
-| 02 | [Clone Repository & Set Up Environment](EXERCISE_02_SETUP_ENVIRONMENT.md) | Git, Python venv | 10 min |
-| 03 | [Generate Custom Project Instructions](EXERCISE_03_CUSTOM_INSTRUCTIONS.md) | `copilot-instructions.md` | 10 min |
-| 04 | [Create a Custom CLI Coding Agent](EXERCISE_04_CREATE_AGENT.md) | `/agent` command | 15 min |
-| 05 | [Plan the Ticket Assignment Feature](EXERCISE_05_PLAN_FEATURE.md) | `/model`, `/plan` | 15 min |
-| 06 | [Delegate Implementation & Review PR](EXERCISE_06_DELEGATE_IMPLEMENTATION.md) | `/context`, `/delegate`, Draft PR | 15 min |
-| 07 | [Generate CI & CD Workflows](EXERCISE_07_CI_CD_WORKFLOWS.md) | GitHub Actions + Copilot CLI | 15 min |
-| 08 | [Generate Self-Healing Workflow & Trigger Failure](EXERCISE_08_SELF_HEALING_SETUP.md) | `workflow_run` trigger | 15 min |
-| 09 | [Observe & Analyse Self-Healing](EXERCISE_09_OBSERVE_SELF_HEALING.md) | Copilot CLI + Actions logs | 10 min |
-| 10 | [Review Self-Healing PR & Verify Recovery](EXERCISE_10_REVIEW_AND_MERGE.md) | Copilot CLI + PR merge | 10 min |
+| 01 | [Install GitHub CLI & Authenticate](./workshops/EXERCISE_01_SETUP_GITHUB_CLI.md) | GitHub CLI + Copilot CLI extension | 10 min |
+| 02 | [Clone Repository & Set Up Environment](./workshops/EXERCISE_02_SETUP_ENVIRONMENT.md) | Git, Python venv | 10 min |
+| 03 | [Generate Custom Project Instructions](./workshops/EXERCISE_03_CUSTOM_INSTRUCTIONS.md) | `copilot-instructions.md` | 10 min |
+| 04 | [Create a Custom CLI Coding Agent](./workshops/EXERCISE_04_CREATE_AGENT.md) | `/agent` command | 15 min |
+| 05 | [Plan the Ticket Assignment Feature](./workshops/EXERCISE_05_PLAN_FEATURE.md) | `/model`, `/plan` | 15 min |
+| 06 | [Delegate Implementation & Review PR](./workshops/EXERCISE_06_DELEGATE_IMPLEMENTATION.md) | `/context`, `/delegate`, Draft PR | 15 min |
+| 07 | [Generate CI & CD Workflows](./workshops/EXERCISE_07_CI_CD_WORKFLOWS.md) | GitHub Actions + Copilot CLI | 15 min |
+| 08 | [Generate Self-Healing Workflow & Trigger Failure](./workshops/EXERCISE_08_SELF_HEALING_SETUP.md) | `workflow_run` trigger | 15 min |
+| 09 | [Observe & Analyse Self-Healing](./workshops/EXERCISE_09_OBSERVE_SELF_HEALING.md) | Copilot CLI + Actions logs | 10 min |
+| 10 | [Review Self-Healing PR & Verify Recovery](./workshops/EXERCISE_10_REVIEW_AND_MERGE.md) | Copilot CLI + PR merge | 10 min |
 
 ### Optional Track (~55 minutes) — After Exercise 10
 
@@ -54,10 +54,10 @@ These exercises are self-contained. Complete them if time allows or revisit them
 
 | # | Exercise | Copilot Feature | Duration | Prerequisite |
 |---|---|---|---|---|
-| 11 | [Build PR Summarizer Agent — SDK Setup](EXERCISE_11_SDK_BUILD_AGENT.md) | Copilot SDK + GitHub API | 15 min | Ex 10 |
-| 12 | [Test & Automate the PR Summarizer](EXERCISE_12_AUTOMATE_PR_SUMMARY.md) | Copilot SDK + GitHub Actions | 15 min | Ex 11 |
-| 13 | [Debug: Introduce Bugs & Diagnose](EXERCISE_13_DEBUGGING_DIAGNOSE.md) | `gh copilot explain`, `gh copilot suggest` | 15 min | Ex 06 |
-| 14 | [Debug: Fix, Validate & Commit](EXERCISE_14_DEBUGGING_FIX.md) | `@terminal`, VS Code Inline Chat `/fix` | 10 min | Ex 13 |
+| 11 | [Build PR Summarizer Agent — SDK Setup](./workshops/EXERCISE_11_SDK_BUILD_AGENT.md) | Copilot SDK + GitHub API | 15 min | Ex 10 |
+| 12 | [Test & Automate the PR Summarizer](./workshops/EXERCISE_12_AUTOMATE_PR_SUMMARY.md) | Copilot SDK + GitHub Actions | 15 min | Ex 11 |
+| 13 | [Debug: Introduce Bugs & Diagnose](./workshops/EXERCISE_13_DEBUGGING_DIAGNOSE.md) | `gh copilot explain`, `gh copilot suggest` | 15 min | Ex 06 |
+| 14 | [Debug: Fix, Validate & Commit](./workshops/EXERCISE_14_DEBUGGING_FIX.md) | `@terminal`, VS Code Inline Chat `/fix` | 10 min | Ex 13 |
 
 ---
 
